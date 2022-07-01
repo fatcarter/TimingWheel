@@ -1,4 +1,4 @@
-package com.fatcarter.wheel;
+package cn.fatcarter.wheel;
 
 import java.util.List;
 import java.util.concurrent.Delayed;

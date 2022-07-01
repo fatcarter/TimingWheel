@@ -1,4 +1,4 @@
-package com.fatcarter.wheel;
+package cn.fatcarter.wheel;
 
 public class TimerTaskEntry implements TimingEntry {
     private final long fireTime;

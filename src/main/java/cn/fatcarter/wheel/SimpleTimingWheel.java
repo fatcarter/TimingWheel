@@ -1,7 +1,5 @@
-package com.fatcarter.wheel;
+package cn.fatcarter.wheel;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.DelayQueue;
 
