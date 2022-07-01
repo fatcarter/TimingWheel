@@ -1,7 +1,5 @@
 package cn.fatcarter.wheel;
 
-import lombok.extern.slf4j.Slf4j;
-
 import java.util.concurrent.DelayQueue;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -11,7 +9,6 @@ import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReadWriteLock;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
-@Slf4j
 public class TimingWheelTimer implements Propeller {
     private static final AtomicInteger id = new AtomicInteger(0);
     private final ExecutorService executorService;

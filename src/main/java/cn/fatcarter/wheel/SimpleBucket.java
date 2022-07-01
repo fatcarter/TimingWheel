@@ -1,7 +1,5 @@
 package cn.fatcarter.wheel;
 
-import lombok.extern.slf4j.Slf4j;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
@@ -9,7 +7,6 @@ import java.util.concurrent.Delayed;
 import java.util.concurrent.TimeUnit;
 import java.util.function.Consumer;
 
-@Slf4j
 public class SimpleBucket implements Bucket {
     private String id;
     private CopyOnWriteArrayList<TimingEntry> entries = new CopyOnWriteArrayList<>();
