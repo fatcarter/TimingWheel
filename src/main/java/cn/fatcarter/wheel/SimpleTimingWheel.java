@@ -24,6 +24,9 @@ public class SimpleTimingWheel implements TimingWheel {
         this.queue = queue;
         this.level = level;
         this.interval = (long) size * tickMs;
+        if (this.interval < 0) {
+            throw new IllegalArgumentException("超时时间溢出！");
+        }
         this.buckets = new Bucket[size];
         for (int i = 0; i < size; i++) {
             buckets[i] = new SimpleBucket(level + "_" + i);
@@ -67,7 +70,7 @@ public class SimpleTimingWheel implements TimingWheel {
 
     @Override
     public void pushTime(long time) {
-        if(time >= now + tickMs){
+        if (time >= now + tickMs) {
             this.now = time - (time % tickMs);
             if (overflowWheel != null) overflowWheel.pushTime(time);
         }
