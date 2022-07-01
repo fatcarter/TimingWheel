@@ -14,4 +14,24 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
+    <scm>
+        <url>https://github.com/fatcarter/TimingWheel.git</url>
+        <connection>scm:git:git:////github.com/fatcarter/TimingWheel.git</connection>
+    </scm>
+    <issueManagement>
+        <system>Github</system>
+        <url>https://github.com/fatcarter/TimingWheel/issues</url>
+    </issueManagement>
+
+    <developers>
+        <developer>
+            <id>Carter</id>
+            <name>Carter</name>
+            <email>fatcarter055@hotmail.com</email>
+            <url>https://github.com/fatcarter</url>
+            <roles>
+                <role>Developer</role>
+            </roles>
+        </developer>
+    </developers>
 </project>
