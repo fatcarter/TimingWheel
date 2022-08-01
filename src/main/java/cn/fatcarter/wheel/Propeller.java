@@ -7,4 +7,6 @@ public interface Propeller {
     void start();
 
     void shutdown();
+
+    boolean isShutdown();
 }

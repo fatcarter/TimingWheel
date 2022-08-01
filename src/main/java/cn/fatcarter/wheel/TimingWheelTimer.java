@@ -44,6 +44,11 @@ public class TimingWheelTimer implements Propeller {
     }
 
     @Override
+    public boolean isShutdown() {
+        return !running.get();
+    }
+
+    @Override
     public void start() {
         if (running.compareAndSet(false, true)) {
             this.clockThread = new Thread(() -> {

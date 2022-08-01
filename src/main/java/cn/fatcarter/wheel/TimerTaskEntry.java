@@ -1,5 +1,7 @@
 package cn.fatcarter.wheel;
 
+import java.util.Date;
+
 public class TimerTaskEntry implements TimingEntry {
     private final long fireTime;
     private final Runnable task;
@@ -9,6 +11,10 @@ public class TimerTaskEntry implements TimingEntry {
     public TimerTaskEntry(long timeout, Runnable task) {
         this.fireTime = System.currentTimeMillis() + timeout;
         this.task = task;
+    }
+
+    public TimerTaskEntry(Date date, Runnable task) {
+        this(date.getTime(), task);
     }
 
     @Override
