@@ -12,4 +12,6 @@ public interface TimingWheel {
     void pushTime(long time);
 
     DelayQueue<Bucket> getQueue();
+
+    boolean cancel(TimingEntry entry);
 }

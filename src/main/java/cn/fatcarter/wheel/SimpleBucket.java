@@ -54,6 +54,11 @@ public class SimpleBucket implements Bucket {
     }
 
     @Override
+    public boolean remove(TimingEntry entry) {
+        return entries.remove(entry);
+    }
+
+    @Override
     public long getDelay(TimeUnit unit) {
         return unit.convert(expiration - System.currentTimeMillis(), TimeUnit.MILLISECONDS);
     }

@@ -1,5 +1,6 @@
 package cn.fatcarter.wheel;
 
+import java.beans.Expression;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.DelayQueue;
 
@@ -35,6 +36,27 @@ public class SimpleTimingWheel implements TimingWheel {
         this.now = startMs;
     }
 
+    @Override
+    public boolean cancel(TimingEntry entry) {
+        long expiration = entry.getFireTime();
+        if (expiration > now + interval) {
+            if (overflowWheel != null) {
+                return overflowWheel.cancel(entry);
+            }
+        }else{
+            // 对齐tick
+            long id = expiration / tickMs;
+            long time = id * tickMs;
+
+            // 获取所在slot索引
+            int index = (int) (id % size);
+            Bucket bucket = buckets[index];
+            if (bucket != null) {
+                return bucket.remove(entry);
+            }
+        }
+        return false;
+    }
 
     @Override
     public boolean add(TimingEntry entry) {

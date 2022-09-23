@@ -36,4 +36,9 @@ public interface Bucket extends Delayed {
      * Flush the bucket, and call consumer for all elements in the entry list
      */
     void flush(Consumer<TimingEntry> consumer);
+
+    /**
+     * Remove one entry
+     */
+    boolean remove(TimingEntry entry);
 }

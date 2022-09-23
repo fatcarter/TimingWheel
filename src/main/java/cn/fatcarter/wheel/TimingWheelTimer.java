@@ -27,6 +27,10 @@ public class TimingWheelTimer implements Propeller {
         this.queue = delegate.getQueue();
     }
 
+    public boolean cancel(TimingEntry entry) {
+        return this.delegate.cancel(entry);
+    }
+
 
     public void add(TimingEntry entry) {
         if (!delegate.add(entry)) {
