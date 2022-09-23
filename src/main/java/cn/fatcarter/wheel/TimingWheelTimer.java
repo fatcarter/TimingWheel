@@ -31,7 +31,7 @@ public class TimingWheelTimer implements Propeller {
     public void add(TimingEntry entry) {
         if (!delegate.add(entry)) {
             if (!entry.isCancelled()) {
-                executorService.execute(entry.getTask());
+                executorService.execute(entry::fire);
             }
         }
     }

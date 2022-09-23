@@ -1,39 +1,23 @@
 package cn.fatcarter.wheel;
 
 import java.util.Date;
+import java.util.function.Consumer;
 
-public class TimerTaskEntry implements TimingEntry {
-    private final long fireTime;
-    private final Runnable task;
+public class TimerTaskEntry extends AbstractTimingEntry {
+    private final Consumer<TimerTaskEntry> consumer;
 
-    private boolean cancelled = false;
-
-    public TimerTaskEntry(long timeout, Runnable task) {
-        this.fireTime = System.currentTimeMillis() + timeout;
-        this.task = task;
+    public TimerTaskEntry(long timeout, Consumer<TimerTaskEntry> consumer) {
+        super(timeout);
+        this.consumer = consumer;
     }
 
-    public TimerTaskEntry(Date date, Runnable task) {
-        this(date.getTime(), task);
-    }
-
-    @Override
-    public long getFireTime() {
-        return fireTime;
+    public TimerTaskEntry(Date date, Consumer<TimerTaskEntry> consumer) {
+        super(date);
+        this.consumer = consumer;
     }
 
     @Override
-    public boolean isCancelled() {
-        return cancelled;
-    }
-
-    @Override
-    public void cancel() {
-        this.cancelled = true;
-    }
-
-    @Override
-    public Runnable getTask() {
-        return task;
+    public void fire() {
+        consumer.accept(this);
     }
 }

@@ -7,5 +7,5 @@ public interface TimingEntry {
 
     boolean isCancelled();
 
-    Runnable getTask();
+    void fire();
 }
